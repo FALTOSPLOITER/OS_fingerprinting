@@ -16,7 +16,9 @@ You can install Scapy using pip:
 
 
 pip install scapy
-Script Description
+
+# Script Description
+
 1. os_fingerprint(ttl_value):
 This function takes the TTL value from a packet's IP header and maps it to a possible operating system.
 The TTL values for some common operating systems are:
@@ -25,22 +27,27 @@ The TTL values for some common operating systems are:
 255: Cisco routers, FreeBSD
 49: Solaris
 Returns the OS based on the TTL value, or "Unknown OS" if the value doesn't match any known patterns.
-2. analyze_packet(packet):
+
+3. analyze_packet(packet):
 Analyzes the captured packet to extract information such as:
 IP layer: Extracts the source IP and TTL value.
 ICMP layer: If the packet is an ICMP packet, it prints a summary.
 TCP layer: If the packet is a TCP packet, it prints a summary.
 Calls os_fingerprint() to guess the operating system based on the TTL value.
-3. capture_packets(interface="eth0"):
+
+4. capture_packets(interface="eth0"):
 Captures live packets on the specified network interface (default is eth0).
 Uses scapy.sniff() to continuously capture packets and pass them to analyze_packet() for processing.
-4. read_pcap(pcap_file):
+
+5. read_pcap(pcap_file):
 Reads offline .pcap files and processes each packet using analyze_packet().
-5. main():
+
+6. main():
 Prompts the user to select between live packet capture or offline packet analysis.
 If live capture is selected, the user is asked for the network interface to capture from (e.g., eth0 or wlan0).
 If offline analysis is selected, the user is asked to provide the path to a .pcap file.
-Usage
+
+# Usage
 Live Packet Capture:
 
 Run the script and select option 1 for live packet capture.
@@ -50,9 +57,10 @@ Offline Packet Analysis:
 
 Select option 2 to analyze a saved .pcap file.
 Provide the path to the .pcap file to read the packets and analyze them.
-Example Output
+
+# Example Output
+
 Live Capture Mode:
-yaml
 
 Select mode (1 for live capture, 2 for offline pcap analysis): 1
 Enter network interface for packet capture (e.g., eth0): eth0
@@ -62,8 +70,8 @@ ICMP Packet: ICMP Echo Request 192.168.1.101 > 192.168.1.1
 TCP Packet: TCP 192.168.1.101:443 > 192.168.1.1:56321 [SYN]
 Source IP: 192.168.1.102 | TTL: 128 | OS: Windows XP and above
 TCP Packet: TCP 192.168.1.102:80 > 192.168.1.1:56322 [ACK]
-Offline Analysis Mode:
-yaml
+
+# Offline Analysis Mode:
 
 Select mode (1 for live capture, 2 for offline pcap analysis): 2
 Enter path to pcap file: capture.pcap
@@ -73,6 +81,7 @@ ICMP Packet: ICMP Echo Request 192.168.1.101 > 192.168.1.1
 TCP Packet: TCP 192.168.1.101:443 > 192.168.1.1:56321 [SYN]
 Source IP: 192.168.1.102 | TTL: 128 | OS: Windows XP and above
 TCP Packet: TCP 192.168.1.102:80 > 192.168.1.1:56322 [ACK]
+
 # Advanced Features
 This script provides basic OS fingerprinting and packet analysis. However, for more accurate and advanced OS fingerprinting, consider integrating tools such as Nmap or p0f, which provide more reliable results based on multiple network characteristics.
 
