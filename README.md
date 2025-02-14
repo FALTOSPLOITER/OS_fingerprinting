@@ -11,10 +11,10 @@ OS Fingerprinting: Infers the operating system of a remote device based on the T
 Packet Summary: Provides details about captured packets, including IP, TCP, and ICMP layer information.
 # Prerequisites
 Python 3.x is required.
-Scapy library is required for packet capture and analysis.
-You can install Scapy using pip:
+Scapy & pyshark library is required for packet capture and analysis.
+You can install Scapy & pyshark using pip:
 
-
+pip install pyshark
 pip install scapy
 
 # Script Description
